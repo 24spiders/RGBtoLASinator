@@ -21,6 +21,7 @@ if __name__ == '__main__':
     parser.add_argument('--save-path',type=str, default = 'converted_annots.xml', help = 'where to save the converted annots (ends in .xml)')
     parser.add_argument('--bottom-per',type=int, default = 1, help = 'int, the percentile to define the bottom of the tree as')
     parser.add_argument('--top-per',type=int, default = 99, help = 'int, the percentile to define the top of the tree as')
+    parser.add_argument('--use-class',action='store_true', help = 'if passed, use class to define bounds. If passed, bottom_per considers only ground points and top_per considers only veg points')
     
     args = parser.parse_args()
     
@@ -41,7 +42,7 @@ if __name__ == '__main__':
     boxes_3d = []
     pbar = tqdm(total = len(geo_boxes))
     for box in geo_boxes:
-        box_3d = infer_z_bounds(box, las_data, bottom_percentile = args.bottom_per, top_percentile = args.top_per)
+        box_3d = infer_z_bounds(box, las_data, bottom_percentile = args.bottom_per, top_percentile = args.top_per, use_class = args.use_class)
         boxes_3d.append(box_3d)
         pbar.update(1)
     print('Conversion Complete!\n')
