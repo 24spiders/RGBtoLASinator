@@ -58,21 +58,21 @@ def plot_tree_projection(boxes: list, pointcloud, save_folder):
             continue
         # Plot the 2d projection
         fig, axs = plt.subplots(1,1)
+        # Plot the height bars
+        height_min = float(tree[6])
+        height_max = float(tree[7])
+        axs.axhline(y = height_max, color = 'r', linestyle = '-', linewidth = 3,)
+        axs.axhline(y = height_min, color = 'r', linestyle = '-', linewidth = 3,)
         # Plot tree pc
         axs.scatter(tree_pc[:,0], tree_pc[:,2], s = .25, c = tree_pc[:,2], cmap = cmap)
-        # Plot the height bars
-        height_min = np.percentile(tree_pc[:,2], 1)
-        height_max = np.percentile(tree_pc[:,2], 99)
-        axs.plot([tree_pc[:,0].min(),tree_pc[:,0].max()], [height_min, height_min], color = 'r', linewidth = 3, linestyle = '-')
-        axs.plot([tree_pc[:,0].min(), tree_pc[:,0].max()], [height_max , height_max], color = 'r', linewidth = 3, linestyle = '-')
         axs.set_xticks([])
         axs.set_xlabel('Projection of Tree in x-z Plane')
         axs.set_ylabel('Height (m)')
         axs.axis('scaled')
-        plt.tight_layout()
-        # plt.show()
+        fig.tight_layout()
+        # fig.show()
         filename = str(ii) + '.png'
         d = os.path.join(save_folder, filename)
-        plt.savefig(d, dpi = 150)
+        fig.savefig(d, dpi = 150)
         ii += 1
         pbar.update(1)
