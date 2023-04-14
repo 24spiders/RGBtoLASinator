@@ -1,13 +1,14 @@
 # RGBtoLASinator
 A simple package that reads 2D annotations and infers the third dimension, allowing for annotated pointclouds
 
+This package reads an annotated tif and its corresponding annotations, as well as the pointcloud overlapping it. It then performs a coordinate transformation so the 2D image annotations are overlaid on the 3D pointcloud. Then, z (vertical) bounds of the box are made by analyzing the points that fall within the 2D box, thus creating a 3D box. Finally, writes an xml containing x,y,z (in geospatial coordinates), and label information for the box. Also includes a plotting tool for assessing the performance
 
 ## USAGE
 ### Converting Annots
 1. Clone the repo to your system
 2. Navigate to the directory
 3. To convert annotations
-4. 
+
 ```python convert_annots.py --las-file "path_to_las_file" --tif-file "path_to_tif_file" --xml-file "path_to_annotation_xml_file" --save-path "out_path/filename.xml" --bottom-per 1 --top-per 99 --use-class```
 
 Note: `bottom-per` and `top-per` are the percentile to use when defining the top and bottom of the tree.
