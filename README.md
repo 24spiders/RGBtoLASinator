@@ -1,6 +1,8 @@
 # RGBtoLASinator
 A simple package that reads 2D annotations and infers the third dimension, allowing for annotated pointclouds
 
+![alt text](https://github.com/WildFire-ML/RGBtoLASinator/blob/main/img/plot_example.png?raw=true)
+
 This package reads an annotated tif and its corresponding annotations, as well as the pointcloud overlapping it. It then performs a coordinate transformation so the 2D image annotations are overlaid on the 3D pointcloud. Then, z (vertical) bounds of the box are made by analyzing the points that fall within the 2D box, thus creating a 3D box. Finally, writes an xml containing x,y,z (in geospatial coordinates), and label information for the box. Also includes a plotting tool for assessing the performance
 
 ## USAGE
