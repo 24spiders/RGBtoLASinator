@@ -13,10 +13,12 @@ import os
 from rgbtolasinator.figures.pc_figures import plot_tree_projection
 from rgbtolasinator.utils.annot_utils import read_pascalvoc
 from rgbtolasinator.utils.las_utils import load_las, project_las_geospatial
+from rgbtolasinator.figures.tif_figures import plot_tif_annots
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--las-file', type=str, help = 'path to the las file')
+    parser.add_argument('--tif-file', type=str, help = 'path to the tif file')
     parser.add_argument('--converted-xml', type=str, help = 'path to the converted xml (from convert_annots)')
     parser.add_argument('--save-folder', type=str, default = './plots/', help = 'folder to save the plots')
     
@@ -41,5 +43,6 @@ if __name__ == '__main__':
     # Plot
     print('Plotting...\n')
     plot_tree_projection(boxes, las, args.save_folder)
+    plot_tif_annots(boxes, args.tif_file, args.save_folder)
     print('Plotting complete!\n')
                                  

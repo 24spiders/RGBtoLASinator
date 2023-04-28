@@ -6,6 +6,7 @@ Created on Wed Apr 12 11:09:46 2023
 """
 
 from pascal_voc_writer import Writer
+from osgeo import gdal
 
 def read_pascalvoc(xml_file: str):
   '''This function takes in an xml file, and returns a nested list of box coordinates, and the box's type
@@ -93,9 +94,7 @@ def px_to_geo(boxes: list, tif_file: str):
     
     Returns:
         geo_boxes: list,[xmin_geo, ymin_geo, xmax_geo, ymax_geo, label, conf, box_x_geo, box_y_geo]
-        Writes a csv file (if print_csv = True) at the tif file location of the tree detection in geospatial coordinates
     '''
-    from osgeo import gdal
     # Get the tif transformation
     ortho = gdal.Open(tif_file)
     x0, px_w, py_w, y0, px_h, py_h = ortho.GetGeoTransform()
@@ -123,3 +122,42 @@ def px_to_geo(boxes: list, tif_file: str):
         ymin_geo = ymax * py_h + y0
         geo_boxes.append([xmin_geo, ymin_geo, xmax_geo, ymax_geo, label, conf, box_x_geo, box_y_geo])
     return geo_boxes
+
+def geo_to_px(geo_boxes: list, tif_file: str):
+    '''
+    The inverse of above!
+
+    Parameters
+    ----------
+    geo_boxes : list
+        Geospatial boxes, [xmin_geo, ymin_geo, xmax_geo, ymax_geo, label, conf, box_x_geo, box_y_geo]
+    tif_file : str
+        str, path to the associated raster.
+
+    Returns
+    -------
+    px boxes, boxes in pixel coordaintes
+
+    '''
+    # Get the tif transformation
+    ortho = gdal.Open(tif_file)
+    x0, px_w, py_w, y0, px_h, py_h = ortho.GetGeoTransform()
+    px_boxes = []
+    for box in geo_boxes:
+        xmin_geo = box[0]
+        ymin_geo = box[1]
+        xmax_geo = box[2]
+        ymax_geo = box[3]
+        label = box[4]
+        conf = box[5]
+        xtra1 = box[6]
+        xtra2 = box[7]
+        
+        # Changing boxes to geo coordinates
+        # Note y flips because the axes flip
+        xmin = (xmin_geo - x0) / px_w
+        xmax = (xmax_geo - x0) / px_w
+        ymin = (ymax_geo - y0) / py_h
+        ymax = (ymin_geo - y0) / py_h
+        px_boxes.append([xmin, ymin, xmax, ymax, label, conf, xtra1, xtra2])     
+    return px_boxes
