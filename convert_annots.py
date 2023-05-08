@@ -10,8 +10,8 @@ from tqdm import tqdm
 
 # Import from package
 from rgbtolasinator.converter.converter import infer_z_bounds
-from rgbtolasinator.utils.las_utils import load_las, project_las_geospatial
-from rgbtolasinator.utils.annot_utils import read_pascalvoc, write_pascalvoc, px_to_geo
+from itamtsupport.utils.img_annot_utils import read_pascalvoc, write_pascalvoc, px_to_geo
+from itamtsupport.utils.las_utils import load_las, project_las_geospatial
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

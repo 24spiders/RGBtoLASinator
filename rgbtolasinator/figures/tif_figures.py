@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 from osgeo import gdal
 import numpy as np
 import os
-from ..utils.annot_utils import geo_to_px
+from itamtsupport.utils.img_annot_utils import geo_to_px
 import matplotlib
 
 def plot_tif_annots(geo_boxes: list, tif_file: str, save_folder: str, linewidth = 4):

@@ -11,8 +11,8 @@ import os
 
 # Import from package
 from rgbtolasinator.figures.pc_figures import plot_tree_projection
-from rgbtolasinator.utils.annot_utils import read_pascalvoc
-from rgbtolasinator.utils.las_utils import load_las, project_las_geospatial
+from itamtsupport.utils.img_annot_utils import read_pascalvoc
+from itamtsupport.utils.las_utils import load_las, project_las_geospatial
 from rgbtolasinator.figures.tif_figures import plot_tif_annots
 
 if __name__ == '__main__':

@@ -10,7 +10,7 @@ import os
 from matplotlib.colors import ListedColormap
 import matplotlib.pyplot as plt
 import warnings
-from ..utils.las_utils import get_tree_from_las
+from itamtsupport.utils.las_utils import get_tree_from_las
 from tqdm import tqdm
 
 def _tree_cmap():
