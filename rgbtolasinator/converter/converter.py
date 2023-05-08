@@ -41,6 +41,7 @@ def infer_z_bounds(tree_box: list, pointcloud, bottom_percentile = 1, top_percen
     # Raise a warning incase no points are found
     if len(pc_ind) == 0:
         warnings.warn('WARNING: No points found within tree bounding box! Are boxes and the pointcloud in the same coordinate system?')
+        print('WARNING: No points found within tree bounding box! Are boxes and the pointcloud in the same coordinate system?')
 
     # Return subset
     tree_pc = pointcloud[pc_ind]
