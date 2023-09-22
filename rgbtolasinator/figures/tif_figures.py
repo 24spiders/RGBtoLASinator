@@ -12,7 +12,7 @@ import os
 from itamtsupport.utils.img_annot_utils import geo_to_px
 import matplotlib
 
-def plot_tif_annots(geo_boxes: list, tif_file: str, save_folder: str, linewidth = 4):
+def plot_height_tif(geo_boxes: list, tif_file: str, save_folder: str, linewidth = 4):
     ''' Draws xml boxes on the image specified. Writes the tree number on each box, to correlate with the output from plot_tree_projection().
     Colors the boxes based on the estimated tree height
     Preserves geospatial projection of image.

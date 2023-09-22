@@ -13,7 +13,7 @@ import os
 from rgbtolasinator.figures.pc_figures import plot_tree_projection
 from itamtsupport.utils.img_annot_utils import read_pascalvoc
 from itamtsupport.utils.las_utils import load_las, project_las_geospatial
-from rgbtolasinator.figures.tif_figures import plot_tif_annots
+from rgbtolasinator.figures.tif_figures import plot_height_tif
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -43,6 +43,6 @@ if __name__ == '__main__':
     # Plot
     print('Plotting...\n')
     plot_tree_projection(boxes, las, args.save_folder)
-    plot_tif_annots(boxes, args.tif_file, args.save_folder)
+    plot_height_tif(boxes, args.tif_file, args.save_folder)
     print('Plotting complete!\n')
                                  
