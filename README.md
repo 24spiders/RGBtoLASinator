@@ -1,5 +1,5 @@
 # RGBtoLASinator
-A simple package that reads 2D annotations and infers the third dimension, allowing for annotated pointclouds
+A simple package that reads 2D annotations (pascalvoc format) and infers the third dimension, allowing for annotated pointclouds
 
 ![alt text](https://github.com/WildFire-ML/RGBtoLASinator/blob/main/img/plot_example.png?raw=true)
 
