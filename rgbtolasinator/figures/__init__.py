@@ -6,3 +6,4 @@ Created on Mon Apr 17 17:16:15 2023
 """
 
 import rgbtolasinator.figures.pc_figures
+import rgbtolasinator.figures.tif_figures

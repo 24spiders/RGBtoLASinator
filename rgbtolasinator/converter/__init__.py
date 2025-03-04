@@ -5,4 +5,5 @@ Created on Mon Apr 17 17:15:35 2023
 @author: Liam
 """
 
-import rgbtolasinator.converter.converter
+import rgbtolasinator.converter.convert
+import rgbtolasinator.converter.utils

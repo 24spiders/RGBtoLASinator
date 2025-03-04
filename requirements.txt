@@ -7,4 +7,3 @@ tqdm
 pascal_voc_writer
 matplotlib
 gdal
-itamtsupport
